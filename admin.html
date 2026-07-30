@@ -1,0 +1,49 @@
+<!DOCTYPE html> <!-- Declaração HTML5 -->
+<html lang="pt-br"> <!-- Idioma Português do Brasil -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | Château des Douceurs</title>
+    
+    <!-- Importação de fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css"> <!-- Importação do CSS estático -->
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">Château des Douceurs</div>
+        <a href="./index.html" class="admin-link">Voltar para a Loja</a>
+    </header>
+
+    <main class="container">
+        <!-- Formulário de Autenticação -->
+        <section id="loginSection" class="auth-card">
+            <h2>Acesso Restrito ao Gestor</h2>
+            <form id="loginForm">
+                <input type="email" id="adminEmail" placeholder="E-mail do Administrador" required>
+                <input type="password" id="adminPassword" placeholder="Senha" required>
+                <button type="submit" class="btn-primary">Acessar Painel</button>
+            </form>
+            <p id="authError" class="error-msg"></p>
+        </section>
+
+        <!-- Seção de Gerenciamento de Feedbacks -->
+        <section id="dashboardSection" class="dashboard-card hidden">
+            <div class="dashboard-header">
+                <h2>Mensagens Recebidas (FAQ)</h2>
+                <button id="btnLogout" class="btn-secondary">Sair do Sistema</button>
+            </div>
+            
+            <div id="faqList" class="faq-grid">
+                <p>Carregando registros do banco de dados...</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./js/admin.js"></script>
+</body>
+</html>

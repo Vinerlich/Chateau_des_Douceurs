@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Château des Douceurs | Haute Pâtisserie & Mariages</title>
+
+    <!-- Importação de fontes de luxo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo-box">
+            <img src="./img/sua-logo.png" alt="Château des Douceurs" class="logo-img">
+
+            <div class="logo-text-group">
+                <h1 class="logo-title">Château des Douceurs</h1>
+                <span class="logo-subtitle">Haute Pâtisserie & Mariages</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <button class="btn-secondary" onclick="abrirCalculadora()">Calculadora do Evento</button>
+            <button class="btn-secondary" onclick="abrirFAQ()">Atendimento / FAQ</button>
+            <a href="./admin.html" class="admin-link">Painel Restrito</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Haute Confeitaria para<br>Casamentos Inesquecíveis</h2>
+        <p>Doces esculpidos à mão e criações exclusivas para o seu grande dia.</p>
+    </section>
+
+    <main class="container">
+        <h3 class="section-title">Coleção Exclusiva</h3>
+
+        <div id="produtos-container" class="grid-produtos">
+            <!-- Cards renderizados via JS -->
+        </div>
+
+        <section class="carrinho-frete-section">
+            <h3>Simular Frete de Entrega</h3>
+            <div class="frete-box">
+                <input type="text" id="cepInput" placeholder="Digite seu CEP (ex: 01001000)" maxlength="8">
+                <button class="btn-primary" onclick="calcularFrete()">Calcular Frete</button>
+            </div>
+            <div id="resultadoEndereco" class="resultado-frete"></div>
+            <div id="resultadoFrete" class="resultado-frete"></div>
+        </section>
+    </main>
+
+    <!-- Modal Calculadora e Montador de Cardápio do Casamento -->
+    <div id="modalCalculadora" class="modal">
+        <div class="modal-content modal-calc">
+            <span class="close-btn" onclick="fecharCalculadora()">&times;</span>
+            <h3>Calculadora e Montagem do Evento</h3>
+            <p class="calc-subtitle">Informe o número de convidados para definir suas metas e monte seu menu
+                personalizado livremente.</p>
+
+            <form id="formCalculadora" onsubmit="definirMetasEvento(event)">
+                <div class="calc-grid">
+                    <div class="calc-field">
+                        <label for="qtdAdultos">Adultos:</label>
+                        <input type="number" id="qtdAdultos" min="0" value="0" required>
+                    </div>
+                    <div class="calc-field">
+                        <label for="qtdCriancas">Crianças (3 a 10 anos):</label>
+                        <input type="number" id="qtdCriancas" min="0" value="0" required>
+                    </div>
+                    <div class="calc-field">
+                        <label for="qtdPets">Pets (Cães/Gatos):</label>
+                        <input type="number" id="qtdPets" min="0" value="0" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Calcular & Personalizar Menu</button>
+            </form>
+
+            <!-- Painel Interativo de Escolha de Produtos -->
+            <div id="painelSelecaoMenu" class="resultado-calc hidden">
+                <h4>Acompanhamento de Metas do Casamento:</h4>
+
+                <div class="metas-container">
+                    <div class="meta-item">🍰 <strong>Bolo Estimado:</strong> <span id="metaBoloTotal">0</span> kg</div>
+                    <div class="meta-item">🍬 <strong>Doces:</strong> <span id="metaDocesAtual">0</span> / <span
+                            id="metaDocesTotal">0</span> un</div>
+                    <div class="meta-item">🐶 <strong>Linha Pet:</strong> <span id="metaPetsAtual">0</span> / <span
+                            id="metaPetsTotal">0</span> porções</div>
+                </div>
+
+                <hr style="margin: 1.2rem 0; border: 0; border-top: 1px solid #e0d8cc;">
+
+                <h5>Selecione as opções do seu cardápio:</h5>
+                <div id="listaProdutosSelecao" class="lista-selecao-produtos">
+                    <!-- Inserido dinamicamente via JS -->
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
+                    <button class="btn-primary" style="flex: 2;" onclick="finalizarSelecaoPersonalizada()">Confirmar
+                        Seleção</button>
+                    <button type="button" class="btn-secondary" style="flex: 1;"
+                        onclick="fecharCalculadora()">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Atendimento/FAQ -->
+    <div id="modalFAQ" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharFAQ()">&times;</span>
+            <h3>Atendimento ao Cliente</h3>
+            <form id="formFAQ" onsubmit="enviarFAQ(event)">
+                <label for="tipoFeedback">Assunto:</label>
+                <select id="tipoFeedback" required>
+                    <option value="sugestao">Sugestão</option>
+                    <option value="reclamacao">Reclamação</option>
+                    <option value="elogio">Elogio</option>
+                </select>
+
+                <label for="msgFeedback">Sua Mensagem:</label>
+                <textarea id="msgFeedback" rows="4" placeholder="Escreva aqui detalhes da sua mensagem..."
+                    required></textarea>
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                    <button type="button" class="btn-secondary" onclick="fecharFAQ()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- VLibras Widget -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+    <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
