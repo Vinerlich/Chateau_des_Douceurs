@@ -21,22 +21,22 @@ try {
 // Catálogo Organizado por Categorias: 1. BOLOS | 2. DOCES FINOS | 3. LINHA PET
 const produtos = [
     // 🍰 BOLOS
-    { id: 1, categoria: "bolo", nome: "Gâteau Impérial aux Fruits Rouges", descricao: "Bolo esculpido de três andares com massa de baunilha de Madagascar e geleia de frutas vermelhas.", preco: 1200.00, img: "../img/bolo7.jpg" },
-    { id: 2, categoria: "bolo", nome: "Gâteau au Chocolat et Noisette", descricao: "Bolo contemporâneo de camadas com gianduia, avelãs torradas e cobertura espelhada de cacau.", preco: 980.00, img: "../img/bolo6.jpg" },
-    { id: 3, categoria: "bolo", nome: "Gâteau à la Fleur d'Oranger et Amandes", descricao: "Bolo de casamento perfumado com água de flor de laranjeira, praliné de amêndoas e pasta americana.", preco: 1150.00, img: "../img/bolo1.jpg" },
-    { id: 4, categoria: "bolo", nome: "Mini Red Velvet Royale", descricao: "Bolos individuais de textura aveludada com suave creme de cream cheese e pérolas de açúcar.", preco: 195.00, img: "../img/red.jpg" },
+    { id: 1, categoria: "bolo", nome: "Gâteau Impérial aux Fruits Rouges", descricao: "Bolo esculpido de três andares com massa de baunilha de Madagascar e geleia de frutas vermelhas.", preco: 1200.00, img: "./img/bolo7.jpg" },
+    { id: 2, categoria: "bolo", nome: "Gâteau au Chocolat et Noisette", descricao: "Bolo contemporâneo de camadas com gianduia, avelãs torradas e cobertura espelhada de cacau.", preco: 980.00, img: "./img/bolo6.jpg" },
+    { id: 3, categoria: "bolo", nome: "Gâteau à la Fleur d'Oranger et Amandes", descricao: "Bolo de casamento perfumado com água de flor de laranjeira, praliné de amêndoas e pasta americana.", preco: 1150.00, img: "./img/bolo1.jpg" },
+    { id: 4, categoria: "bolo", nome: "Mini Red Velvet Royale", descricao: "Bolos individuais de textura aveludada com suave creme de cream cheese e pérolas de açúcar.", preco: 195.00, img: "./img/red.jpg" },
 
     // 🍬 DOCES FINOS & BEM-CASADOS (Cada kit/caixa contempla 25 unidades)
-    { id: 5, categoria: "doce", nome: "Le Grand Bem-Marié Classique (25 un)", descricao: "Tradicional bem-casado de pão de ló macio recheado com doce de leite artesanal fava de baunilha.", preco: 180.00, img: "../img/bc.jpg" },
-    { id: 6, categoria: "doce", nome: "Macarons d’Or 24k (25 un)", descricao: "Finos biscoitos artesanais recheados com ganache de chocolate belga 70% e folha de ouro 24k.", preco: 240.00, img: "../img/maca.jpg" },
-    { id: 7, categoria: "doce", nome: "Truffes au Champagne (25 un)", descricao: "Trufas de chocolate nobre com infusão de champanhe francês Millésimé e pó de cacau.", preco: 310.00, img: "../img/trufa.jpg" },
-    { id: 8, categoria: "doce", nome: "Éclairs de Pistache d'Bronte (25 un)", descricao: "Massa choux crocante recheada com cremoso praliné de pistaches sicilianos selecionados.", preco: 280.00, img: "../img/eclair.jpg" },
-    { id: 9, categoria: "doce", nome: "Tartaletes de Limão Taiti e Merengue (25 un)", descricao: "Delicadas tortinhas individuais com curd de limão Taiti e merengue suíço maçaricado à mão.", preco: 210.00, img: "../img/tlimao.jpg" },
+    { id: 5, categoria: "doce", nome: "Le Grand Bem-Marié Classique (25 un)", descricao: "Tradicional bem-casado de pão de ló macio recheado com doce de leite artesanal fava de baunilha.", preco: 180.00, img: "./img/bc.jpg" },
+    { id: 6, categoria: "doce", nome: "Macarons d’Or 24k (25 un)", descricao: "Finos biscoitos artesanais recheados com ganache de chocolate belga 70% e folha de ouro 24k.", preco: 240.00, img: "./img/maca.jpg" },
+    { id: 7, categoria: "doce", nome: "Truffes au Champagne (25 un)", descricao: "Trufas de chocolate nobre com infusão de champanhe francês Millésimé e pó de cacau.", preco: 310.00, img: "./img/trufa.jpg" },
+    { id: 8, categoria: "doce", nome: "Éclairs de Pistache d'Bronte (25 un)", descricao: "Massa choux crocante recheada com cremoso praliné de pistaches sicilianos selecionados.", preco: 280.00, img: "./img/eclair.jpg" },
+    { id: 9, categoria: "doce", nome: "Tartaletes de Limão Taiti e Merengue (25 un)", descricao: "Delicadas tortinhas individuais com curd de limão Taiti e merengue suíço maçaricado à mão.", preco: 210.00, img: "./img/tlimao.jpg" },
 
     // 🐾 LINHA PET-FRIENDLY
-    { id: 10, categoria: "pet", nome: "Gâteau Canó Canine & Feline (Pet-Friendly)", descricao: "Bolo festivo 100% natural para pets, feito com aveia, cenoura, frango desfiado sem açúcar.", preco: 150.00, img: "../img/bolodog.jpg" },
-    { id: 11, categoria: "pet", nome: "Pupcakes Gourmet à la Pomme et Cannelle", descricao: "Mini cupcakes caninos nutritivos de maçã, pasta de amendoim e iogurte sem lactose.", preco: 110.00, img: "../img/pup.jpg" },
-    { id: 12, categoria: "pet", nome: "Truffes Canines à la Patate Douce et Caroube", descricao: "Docinhos saudáveis de batata-doce, frango desfiado e farinha de alfarroba.", preco: 130.00, img: "../img/brigadog.jpg" }
+    { id: 10, categoria: "pet", nome: "Gâteau Canó Canine & Feline (Pet-Friendly)", descricao: "Bolo festivo 100% natural para pets, feito com aveia, cenoura, frango desfiado sem açúcar.", preco: 150.00, img: "./img/bolodog.jpg" },
+    { id: 11, categoria: "pet", nome: "Pupcakes Gourmet à la Pomme et Cannelle", descricao: "Mini cupcakes caninos nutritivos de maçã, pasta de amendoim e iogurte sem lactose.", preco: 110.00, img: "./img/pup.jpg" },
+    { id: 12, categoria: "pet", nome: "Truffes Canines à la Patate Douce et Caroube", descricao: "Docinhos saudáveis de batata-doce, frango desfiado e farinha de alfarroba.", preco: 130.00, img: "./img/brigadog.jpg" }
 ];
 
 // Renderiza a vitrine de produtos na home
