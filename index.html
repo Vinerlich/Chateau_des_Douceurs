@@ -1,153 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Château des Douceurs | Haute Pâtisserie & Mariages</title>
 
-    <!-- Importação de fontes de luxo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <!-- 2. Ícone da Aba do Navegador -->
+    <link rel="icon" type="image/png" href="./img/logoIcone.png">
 
+    <!-- Estilos e Fontes -->
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <!-- 1. CABEÇALHO DO SITE -->
     <header class="main-header">
         <div class="logo-box">
-            <img src="./img/sua-logo.png" alt="Château des Douceurs" class="logo-img">
-
-            <div class="logo-text-group">
-                <h1 class="logo-title">Château des Douceurs</h1>
-                <span class="logo-subtitle">Haute Pâtisserie & Mariages</span>
-            </div>
+            <a href="index.html">
+                <img src="./img/logorecorte.png" alt="Château des Douceurs - Haute Pâtisserie & Mariages" class="logo-site">
+            </a>
         </div>
-        <nav class="nav-links">
-            <button class="btn-secondary" onclick="abrirCalculadora()">Calculadora do Evento</button>
-            <button class="btn-secondary" onclick="abrirFAQ()">Atendimento / FAQ</button>
-            <a href="./admin.html" class="admin-link">Painel Restrito</a>
+
+        <!-- Botão Hambúrguer para Celular -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menu de Navegação -->
+        <nav class="nav-links" id="navLinks">
+            <button class="btn-secondary" onclick="abrirCalculadora()">Calculadora do Casamento</button>
+            <button class="btn-secondary" onclick="abrirFAQ()">Dúvidas & Contato</button>
+            <a href="admin.html" class="admin-link">Área Restrita</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h2>Haute Confeitaria para<br>Casamentos Inesquecíveis</h2>
-        <p>Doces esculpidos à mão e criações exclusivas para o seu grande dia.</p>
+    <!-- HERO BANNER (COM MARCA D'ÁGUA E DIVISOR DOURADO) -->
+    <section class="hero marca-dagua-bg">
+        <h2>Coleção Exclusiva para Casamentos</h2>
+        <p class="slogan-hero">"A arte de transformar celebrações em momentos eternos."</p>
+
+        <!-- Divisor elegante feito em CSS -->
+        <div class="divisor-linha-dourada"><span>❖</span></div>
+
+        <p>Doces finos, bolos artísticos e lembrancinhas inesquecíveis elaborados com a mais alta confeitaria francesa.</p>
     </section>
 
+    <!-- CONTEÚDO PRINCIPAL / VITRINE DE PRODUTOS -->
     <main class="container">
-        <h3 class="section-title">Coleção Exclusiva</h3>
-
-        <div id="produtos-container" class="grid-produtos">
-            <!-- Cards renderizados via JS -->
+        <div id="produtos-container">
+            <!-- Os cards dos produtos são gerados dinamicamente via JS -->
         </div>
 
+        <!-- SIMULADOR DE FRETE VIA CEP -->
         <section class="carrinho-frete-section">
-            <h3>Simular Frete de Entrega</h3>
+            <h3>Simular Entrega para o Evento</h3>
             <div class="frete-box">
-                <input type="text" id="cepInput" placeholder="Digite seu CEP (ex: 01001000)" maxlength="8">
-                <button class="btn-primary" onclick="calcularFrete()">Calcular Frete</button>
+                <input type="text" id="cepInput" placeholder="Digite o CEP do local do evento..." maxlength="9">
+                <button class="btn-primary" onclick="calcularFrete()">Calcular</button>
             </div>
             <div id="resultadoEndereco" class="resultado-frete"></div>
             <div id="resultadoFrete" class="resultado-frete"></div>
         </section>
     </main>
 
-    <!-- Modal Calculadora e Montador de Cardápio do Casamento -->
+    <!-- MODAL CALCULADORA DO CASAMENTO -->
     <div id="modalCalculadora" class="modal">
-        <div class="modal-content modal-calc">
+        <div class="modal-content marca-dagua-bg">
             <span class="close-btn" onclick="fecharCalculadora()">&times;</span>
-            <h3>Calculadora e Montagem do Evento</h3>
-            <p class="calc-subtitle">Informe o número de convidados para definir suas metas e monte seu menu
-                personalizado livremente.</p>
+            <h3 class="section-title">Calculadora de Menu</h3>
+            <p class="calc-subtitle">Estime as quantidades ideais para encantar seus convidados.</p>
 
-            <form id="formCalculadora" onsubmit="definirMetasEvento(event)">
+            <form onsubmit="definirMetasEvento(event)">
                 <div class="calc-grid">
                     <div class="calc-field">
-                        <label for="qtdAdultos">Adultos:</label>
-                        <input type="number" id="qtdAdultos" min="0" value="0" required>
+                        <label for="qtdAdultos">Adultos</label>
+                        <input type="number" id="qtdAdultos" min="0" placeholder="Ex: 150">
                     </div>
                     <div class="calc-field">
-                        <label for="qtdCriancas">Crianças (3 a 10 anos):</label>
-                        <input type="number" id="qtdCriancas" min="0" value="0" required>
+                        <label for="qtdCriancas">Crianças</label>
+                        <input type="number" id="qtdCriancas" min="0" placeholder="Ex: 20">
                     </div>
                     <div class="calc-field">
-                        <label for="qtdPets">Pets (Cães/Gatos):</label>
-                        <input type="number" id="qtdPets" min="0" value="0" required>
+                        <label for="qtdPets">Pets</label>
+                        <input type="number" id="qtdPets" min="0" placeholder="Ex: 2">
                     </div>
                 </div>
-
-                <button type="submit" class="btn-primary">Calcular & Personalizar Menu</button>
+                <button type="submit" class="btn-primary" style="width: 100%;">Calcular Sugestão</button>
             </form>
 
-            <!-- Painel Interativo de Escolha de Produtos -->
             <div id="painelSelecaoMenu" class="resultado-calc hidden">
-                <h4>Acompanhamento de Metas do Casamento:</h4>
-
+                <h4>Recomendação do Ateliê:</h4>
                 <div class="metas-container">
-                    <div class="meta-item">🍰 <strong>Bolo Estimado:</strong> <span id="metaBoloTotal">0</span> kg</div>
-                    <div class="meta-item">🍬 <strong>Doces:</strong> <span id="metaDocesAtual">0</span> / <span
-                            id="metaDocesTotal">0</span> un</div>
-                    <div class="meta-item">🐶 <strong>Linha Pet:</strong> <span id="metaPetsAtual">0</span> / <span
-                            id="metaPetsTotal">0</span> porções</div>
+                    <div class="meta-item">Bolo Sugerido: <strong id="metaBoloTotal">0</strong> kg</div>
+                    <div class="meta-item">Doces: <strong id="metaDocesAtual">0</strong> / <strong id="metaDocesTotal">0</strong> un</div>
+                    <div class="meta-item">Linha Pet: <strong id="metaPetsAtual">0</strong> / <strong id="metaPetsTotal">0</strong> porções</div>
                 </div>
 
-                <hr style="margin: 1.2rem 0; border: 0; border-top: 1px solid #e0d8cc;">
+                <h4 style="margin-top: 1.2rem;">Monte seu Cardápio:</h4>
+                <div id="listaProdutosSelecao" class="lista-selecao-produtos"></div>
 
-                <h5>Selecione as opções do seu cardápio:</h5>
-                <div id="listaProdutosSelecao" class="lista-selecao-produtos">
-                    <!-- Inserido dinamicamente via JS -->
-                </div>
-
-                <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
-                    <button class="btn-primary" style="flex: 2;" onclick="finalizarSelecaoPersonalizada()">Confirmar
-                        Seleção</button>
-                    <button type="button" class="btn-secondary" style="flex: 1;"
-                        onclick="fecharCalculadora()">Fechar</button>
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="finalizarSelecaoPersonalizada()">Gravar Seleção do Casamento</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Atendimento/FAQ -->
+    <!-- MODAL DÚVIDAS / FAQ -->
     <div id="modalFAQ" class="modal">
-        <div class="modal-content">
+        <div class="modal-content marca-dagua-bg">
             <span class="close-btn" onclick="fecharFAQ()">&times;</span>
-            <h3>Atendimento ao Cliente</h3>
+            <h3 class="section-title">Atendimento Exclusivo</h3>
             <form id="formFAQ" onsubmit="enviarFAQ(event)">
-                <label for="tipoFeedback">Assunto:</label>
-                <select id="tipoFeedback" required>
-                    <option value="sugestao">Sugestão</option>
-                    <option value="reclamacao">Reclamação</option>
-                    <option value="elogio">Elogio</option>
-                </select>
-
-                <label for="msgFeedback">Sua Mensagem:</label>
-                <textarea id="msgFeedback" rows="4" placeholder="Escreva aqui detalhes da sua mensagem..."
-                    required></textarea>
-
-                <div class="modal-actions">
-                    <button type="submit" class="btn-primary">Enviar Mensagem</button>
-                    <button type="button" class="btn-secondary" onclick="fecharFAQ()">Cancelar</button>
+                <div class="calc-field" style="margin-bottom: 1rem;">
+                    <label for="tipoFeedback">Assunto</label>
+                    <select id="tipoFeedback" required>
+                        <option value="Dúvida">Dúvida sobre Cardápio</option>
+                        <option value="Agendamento">Agendar Degustação</option>
+                        <option value="Orçamento">Solicitar Orçamento Especial</option>
+                    </select>
                 </div>
+                <div class="calc-field" style="margin-bottom: 1rem;">
+                    <label for="msgFeedback">Sua Mensagem</label>
+                    <textarea id="msgFeedback" rows="4" placeholder="Como podemos ajudar no seu grande dia?" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Enviar ao Ateliê</button>
             </form>
         </div>
     </div>
 
-    <!-- VLibras Widget -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+    <!-- MODAL DE VISUALIZAÇÃO DE IMAGEM EM TELA CHEIA (LIGHTBOX) -->
+    <div id="modalImagemZoom" class="modal-img-overlay hidden" onclick="fecharZoomImagem()">
+        <span class="close-img-btn" onclick="fecharZoomImagem()">&times;</span>
+        <img id="imgAmpliada" class="modal-img-content" src="" alt="Imagem Ampliada">
+        <div id="captionImagem" class="modal-caption"></div>
     </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
+    <!-- RODAPÉ E SELO DE QUALIDADE -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <img src="./img/logoempilha.png" alt="Château des Douceurs Logo Institucional" class="logo-footer">
+            <p class="footer-tagline">Alta Confeitaria para Momentos Inesquecíveis</p>
+            <p class="footer-copy">&copy; Château des Douceurs. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script type="module" src="./js/script.js"></script>
 </body>
 

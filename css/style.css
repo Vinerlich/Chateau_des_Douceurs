@@ -1,14 +1,17 @@
 /* ==========================================================================
-   CHÂTEAU DES DOUCEURS - PALETA DE CORES & VARIÁVEIS GLOBAIS
+   CHÂTEAU DES DOUCEURS - PALETA OFICIAL & VARIÁVEIS GLOBAIS
    ========================================================================== */
 :root {
-    --primary-color: #2c2a29;       /* Dark Chocolate / Antracite */
-    --accent-color: #c5a059;        /* Ouro Velho / Champagne */
-    --bg-light: #fdfbf7;            /* Off-white / Creme Manteiga */
-    --card-bg: #ffffff;
-    --text-color: #333333;
+    --primary-color: #1D1D1D;       /* Preto Sofisticado */
+    --accent-gold: #C9A86A;         /* Dourado Champagne */
+    --accent-rose: #C98C7B;         /* Rose Gold */
+    --accent-silver: #BFC4C8;       /* Prata */
+    --bg-light: #FDF9F3;            /* Off White Oficial */
+    --card-bg: #FFFFFF;
+    --text-color: #1D1D1D;
     --text-muted: #666666;
-    --border-color: #e5ded3;
+    --border-color: #EADEC9;        /* Tom suave derivado do champagne */
+    
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
 }
@@ -45,12 +48,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   CABEÇALHO & LOGO (ALINHAMENTO EM LINHA ÚNICA)
+   1. CABEÇALHO & LOGO PRINCIPAL
    ========================================================================== */
 .main-header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,43 +66,18 @@ h1, h2, h3, h4, h5, h6 {
 .logo-box {
     display: flex;
     align-items: center;
-    gap: 14px;
 }
 
-.logo-img {
-    width: 42px;
-    height: 42px;
+.logo-site {
+    height: 110px; /* Destaque ampliado */
+    width: auto;
     object-fit: contain;
-    flex-shrink: 0;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-.logo-text-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.logo-title {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: 0.8px;
-    line-height: 1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    white-space: nowrap;
-}
-
-.logo-subtitle {
-    font-size: 0.7rem;
-    color: var(--accent-color);
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    margin-top: 4px;
-    line-height: 1;
-    white-space: nowrap;
+.logo-site:hover {
+    transform: scale(1.02);
 }
 
 .nav-links {
@@ -117,14 +95,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-link:hover {
-    color: var(--accent-color);
+    color: var(--accent-gold);
 }
 
 /* ==========================================================================
-   BOTÕES
+   BOTÕES E ELEMENTOS DE AÇÃO
    ========================================================================== */
 .btn-primary {
-    background-color: var(--accent-color);
+    background-color: var(--accent-gold);
     color: #ffffff;
     border: none;
     padding: 0.7rem 1.4rem;
@@ -147,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-secondary {
     background-color: transparent;
     color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--accent-gold);
     padding: 0.6rem 1.2rem;
     font-family: var(--font-body);
     font-size: 0.85rem;
@@ -159,29 +137,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
+    background-color: var(--accent-gold);
     color: #ffffff;
 }
 
 /* ==========================================================================
-   HERO BANNER (CLEAN & MANTIDO FUNDO SUAVE)
+   3. MARCA D'ÁGUA, SLOGAN & DIVISOR ELEGANTE (HERO BANNER)
    ========================================================================== */
-.hero {
+.marca-dagua-bg {
+    background-image: url('../img/logo-marca-dagua.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.hero.marca-dagua-bg {
     text-align: center;
-    padding: 3.5rem 1.5rem 1.5rem 1.5rem;
-    background-color: transparent;
-    color: var(--primary-color);
+    padding: 4rem 1.5rem 2.5rem 1.5rem;
+    background-size: 280px auto;
 }
 
 .hero h2 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 400;
     line-height: 1.25;
-    margin-bottom: 0.8rem;
     color: var(--primary-color);
 }
 
-.hero p {
+.slogan-hero {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--accent-rose);
+    margin-top: 0.4rem;
+}
+
+.divisor-linha-dourada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 1.2rem auto;
+    width: 240px;
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+}
+
+.divisor-linha-dourada::before,
+.divisor-linha-dourada::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.hero p:last-child {
     font-size: 1rem;
     font-weight: 300;
     max-width: 600px;
@@ -192,18 +202,19 @@ h1, h2, h3, h4, h5, h6 {
 /* ==========================================================================
    VITRINE DE PRODUTOS
    ========================================================================== */
-.section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
+.categoria-titulo {
+    font-size: 1.6rem;
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin: 2.5rem 0 1.5rem 0;
 }
 
 .grid-produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .card-produto {
@@ -223,8 +234,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-produto img {
     width: 100%;
-    height: 220px;
+    height: 270px;
     object-fit: cover;
+    object-position: center;
+    padding: 0;
+    background-color: transparent;
+    transition: transform 0.5s ease;
+}
+
+.card-produto:hover img {
+    transform: scale(1.04);
 }
 
 .card-body {
@@ -250,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-price {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--accent-color);
+    color: var(--accent-gold);
     margin-bottom: 1rem;
 }
 
@@ -292,7 +311,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   ESTILOS DE MODAIS (RESPONSIVOS & ROLÁVEIS)
+   ESTILOS DE MODAIS
    ========================================================================== */
 .modal {
     display: none;
@@ -306,13 +325,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .modal-content {
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 2rem;
+    padding: 2.2rem;
     width: 100%;
     max-width: 650px;
     max-height: 85vh;
@@ -321,13 +339,17 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.modal-content.marca-dagua-bg {
+    background-size: 320px auto;
+}
+
 .close-btn {
     position: sticky;
     top: -1rem;
     float: right;
     font-size: 1.8rem;
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--accent-gold);
     cursor: pointer;
     line-height: 1;
     z-index: 10;
@@ -344,6 +366,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .calc-grid {
@@ -375,12 +398,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1.5rem;
 }
 
-/* ==========================================================================
-   MONTADOR INTERATIVO DE CARDÁPIO NA CALCULADORA
-   ========================================================================== */
 .resultado-calc {
     margin-top: 1.5rem;
-    background-color: var(--bg-light);
+    background-color: rgba(253, 251, 247, 0.9);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 1.2rem;
@@ -393,7 +413,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #ffffff;
     padding: 1rem;
     border-radius: 4px;
-    border: 1px solid rgba(197, 160, 89, 0.3);
+    border: 1px solid rgba(201, 168, 106, 0.3);
     margin-top: 0.8rem;
 }
 
@@ -437,7 +457,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .item-selecao-info small {
     font-size: 0.78rem;
-    color: var(--accent-color);
+    color: var(--accent-gold);
 }
 
 .qtd-controls {
@@ -458,23 +478,120 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (DISPOSITIVOS MÓVEIS)
+   4. RODAPÉ E SELO DE QUALIDADE (02. VERSÃO EMPILHADA)
    ========================================================================== */
+.main-footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 1.2rem 1.5rem 1rem 1.5rem; /* Reduzido de 3rem para 1.2rem */
+    text-align: center;
+    margin-top: 2rem; /* Reduzido de 4rem para 2rem */
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-footer {
+    height: 65px; /* Reduzido de 110px para 65px */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 0.4rem; /* Reduzido de 1.2rem para 0.4rem */
+}
+
+.footer-tagline {
+    font-family: var(--font-heading);
+    font-size: 0.95rem; /* Reduzido de 1.1rem */
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem; /* Reduzido de 1.5rem para 0.5rem */
+}
+
+.footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   MENU HAMBÚRGUER & RESPONSIVIDADE
+   ========================================================================== */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-gold);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 @media (max-width: 768px) {
     .main-header {
+        position: relative;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
         flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
         gap: 1rem;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links .btn-secondary,
+    .nav-links .admin-link {
+        width: 100%;
         text-align: center;
     }
-    
-    .hero h2 {
-        font-size: 2.2rem;
-    }
-    
+
     .calc-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .metas-container {
         flex-direction: column;
         gap: 0.5rem;
