@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: 1.2rem 2.5rem;
+    padding: 0.8rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,18 +66,15 @@ h1, h2, h3, h4, h5, h6 {
 .logo-box {
     display: flex;
     align-items: center;
+    max-width: 80%;
 }
 
 .logo-site {
-    height: 110px; /* Destaque ampliado */
-    width: auto;
+    height: auto;
+    max-height: 140px;
+    max-width: 100%;
     object-fit: contain;
     display: block;
-    transition: transform 0.3s ease;
-}
-
-.logo-site:hover {
-    transform: scale(1.02);
 }
 
 .nav-links {
@@ -478,14 +475,83 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   4. RODAPÉ E SELO DE QUALIDADE (02. VERSÃO EMPILHADA)
+   MODAL DE ZOOM DE IMAGEM (LIGHTBOX DOS CARDS)
+   ========================================================================== */
+.card-produto img {
+    cursor: zoom-in;
+}
+
+.modal-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-img-content {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: zoomSuave 0.3s ease;
+}
+
+.modal-caption {
+    margin-top: 15px;
+    color: var(--bg-light);
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.close-img-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: var(--bg-light);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.close-img-btn:hover {
+    color: var(--accent-gold);
+}
+
+@keyframes zoomSuave {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   4. RODAPÉ E SELO DE QUALIDADE
    ========================================================================== */
 .main-footer {
     background-color: var(--card-bg);
     border-top: 1px solid var(--border-color);
-    padding: 1.2rem 1.5rem 1rem 1.5rem; /* Reduzido de 3rem para 1.2rem */
+    padding: 0.8rem 1rem; /* Padding reduzido para diminuir a altura do rodapé */
     text-align: center;
-    margin-top: 2rem; /* Reduzido de 4rem para 2rem */
+    margin-top: 2rem;
 }
 
 .footer-content {
@@ -494,26 +560,49 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.2rem; /* Espaçamento compacto e proporcional */
 }
 
 .logo-footer {
-    height: 65px; /* Reduzido de 110px para 65px */
+    height: 45px; /* Reduzido de 65px para diminuir a altura vertical */
     width: auto;
     object-fit: contain;
-    margin-bottom: 0.4rem; /* Reduzido de 1.2rem para 0.4rem */
+    margin-bottom: 0.2rem;
 }
 
 .footer-tagline {
     font-family: var(--font-heading);
-    font-size: 0.95rem; /* Reduzido de 1.1rem */
+    font-size: 0.85rem;
     color: var(--accent-gold);
     letter-spacing: 1px;
-    margin-bottom: 0.5rem; /* Reduzido de 1.5rem para 0.5rem */
+    margin-bottom: 0.2rem;
+}
+
+/* Ícones das Redes Sociais */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0.3rem 0 0.4rem 0;
+}
+
+.footer-social a {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: var(--accent-gold);
+    transform: translateY(-2px);
 }
 
 .footer-copy {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--text-muted);
+    margin: 0;
 }
 
 /* ==========================================================================
@@ -556,7 +645,11 @@ h1, h2, h3, h4, h5, h6 {
     .main-header {
         position: relative;
         justify-content: space-between;
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .logo-site {
+        max-height: 90px;
     }
 
     .hamburger-btn {

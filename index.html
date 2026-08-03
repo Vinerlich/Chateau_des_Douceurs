@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Château des Douceurs | Haute Pâtisserie & Mariages</title>
 
-    <!-- 2. Ícone da Aba do Navegador -->
+    <!-- Ícone da Aba do Navegador -->
     <link rel="icon" type="image/png" href="./img/logoIcone.png">
 
     <!-- Estilos e Fontes -->
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Ícones para as Redes Sociais (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -20,7 +25,8 @@
     <header class="main-header">
         <div class="logo-box">
             <a href="index.html">
-                <img src="./img/logorecorte.png" alt="Château des Douceurs - Haute Pâtisserie & Mariages" class="logo-site">
+                <img src="./img/logorecorte.png" alt="Château des Douceurs - Haute Pâtisserie & Mariages"
+                    class="logo-site">
             </a>
         </div>
 
@@ -47,7 +53,8 @@
         <!-- Divisor elegante feito em CSS -->
         <div class="divisor-linha-dourada"><span>❖</span></div>
 
-        <p>Doces finos, bolos artísticos e lembrancinhas inesquecíveis elaborados com a mais alta confeitaria francesa.</p>
+        <p>Doces finos, bolos artísticos e lembrancinhas inesquecíveis elaborados com a mais alta confeitaria francesa.
+        </p>
     </section>
 
     <!-- CONTEÚDO PRINCIPAL / VITRINE DE PRODUTOS -->
@@ -97,15 +104,18 @@
                 <h4>Recomendação do Ateliê:</h4>
                 <div class="metas-container">
                     <div class="meta-item">Bolo Sugerido: <strong id="metaBoloTotal">0</strong> kg</div>
-                    <div class="meta-item">Doces: <strong id="metaDocesAtual">0</strong> / <strong id="metaDocesTotal">0</strong> un</div>
-                    <div class="meta-item">Linha Pet: <strong id="metaPetsAtual">0</strong> / <strong id="metaPetsTotal">0</strong> porções</div>
+                    <div class="meta-item">Doces: <strong id="metaDocesAtual">0</strong> / <strong
+                            id="metaDocesTotal">0</strong> un</div>
+                    <div class="meta-item">Linha Pet: <strong id="metaPetsAtual">0</strong> / <strong
+                            id="metaPetsTotal">0</strong> porções</div>
                 </div>
 
                 <h4 style="margin-top: 1.2rem;">Monte seu Cardápio:</h4>
                 <div id="listaProdutosSelecao" class="lista-selecao-produtos"></div>
 
                 <div class="modal-actions">
-                    <button class="btn-primary" onclick="finalizarSelecaoPersonalizada()">Gravar Seleção do Casamento</button>
+                    <button class="btn-primary" onclick="finalizarSelecaoPersonalizada()">Gravar Seleção do
+                        Casamento</button>
                 </div>
             </div>
         </div>
@@ -127,7 +137,8 @@
                 </div>
                 <div class="calc-field" style="margin-bottom: 1rem;">
                     <label for="msgFeedback">Sua Mensagem</label>
-                    <textarea id="msgFeedback" rows="4" placeholder="Como podemos ajudar no seu grande dia?" required></textarea>
+                    <textarea id="msgFeedback" rows="4" placeholder="Como podemos ajudar no seu grande dia?"
+                        required></textarea>
                 </div>
                 <button type="submit" class="btn-primary" style="width: 100%;">Enviar ao Ateliê</button>
             </form>
@@ -146,6 +157,20 @@
         <div class="footer-content">
             <img src="./img/logoempilha.png" alt="Château des Douceurs Logo Institucional" class="logo-footer">
             <p class="footer-tagline">Alta Confeitaria para Momentos Inesquecíveis</p>
+
+            <!-- Ícones das Redes Sociais -->
+            <div class="footer-social">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/5511987342562" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
             <p class="footer-copy">&copy; Château des Douceurs. Todos os direitos reservados.</p>
         </div>
     </footer>

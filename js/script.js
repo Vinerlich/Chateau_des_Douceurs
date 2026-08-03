@@ -18,69 +18,205 @@ try {
     console.warn("Erro ao conectar com o Firebase:", e);
 }
 
-// Catálogo Reorganizado: Mesa de Doces vs. Lembrancinhas e Linha Pet
+// Catálogo com Sufixos Elegantes para Cada Formato de Venda (/ kg ou / 25 un)
 const produtos = [
-    // 🍰 BOLOS (Mesa de Doces)
-    { id: 1, categoria: "bolo", secao: "evento", nome: "Gâteau Impérial aux Fruits Rouges", descricao: "Bolo esculpido de três andares com massa de baunilha de Madagascar e geleia de frutas vermelhas.", preco: 1200.00, img: "./img/bolo7.jpg" },
-    { id: 2, categoria: "bolo", secao: "evento", nome: "Gâteau au Chocolat et Noisette", descricao: "Bolo contemporâneo de camadas com gianduia, avelãs torradas e cobertura espelhada de cacau.", preco: 980.00, img: "./img/bolo6.jpg" },
-    { id: 3, categoria: "bolo", secao: "evento", nome: "Gâteau à la Fleur d'Oranger et Amandes", descricao: "Bolo de casamento perfumado com água de flor de laranjeira, praliné de amêndoas e pasta americana.", preco: 1150.00, img: "./img/bolo1.jpg" },
+    // 🍰 1. LES GÂTEAUX D'EXCEPTION
+    { 
+        id: 1, 
+        categoria: "bolo", 
+        secao: "bolo", 
+        nome: "Gâteau Impérial aux Fruits Rouges", 
+        descricao: "Massa leve de baunilha de Madagascar, suave creme diplomata e geleia artesanal de frutas vermelhas.", 
+        preco: 220.00, 
+        unidade: "/ kg",
+        img: "./img/bolo7.jpg" 
+    },
+    { 
+        id: 2, 
+        categoria: "bolo", 
+        secao: "bolo", 
+        nome: "Gâteau au Chocolat Belge et Noisette", 
+        descricao: "Camadas de pão de ló de cacau nobre, praliné crocante de avelãs e ganache de chocolate 70%.", 
+        preco: 195.00, 
+        unidade: "/ kg",
+        img: "./img/bolo6.jpg" 
+    },
+    { 
+        id: 3, 
+        categoria: "bolo", 
+        secao: "bolo", 
+        nome: "Gâteau Fleur d'Oranger et Amandes", 
+        descricao: "Bolo festivo perfumado com água de flor de laranjeira, recheio de amêndoas e pasta americana.", 
+        preco: 240.00, 
+        unidade: "/ kg",
+        img: "./img/bolo1.jpg" 
+    },
 
-    // 🍬 DOCES FINOS & MINIATURAS (Mesa de Doces)
-    { id: 4, categoria: "doce", secao: "evento", nome: "Mini Red Velvet Royale (25 un)", descricao: "Mini bolos individuais de textura aveludada com suave creme de cream cheese e pérolas de açúcar.", preco: 195.00, img: "./img/red.jpg" },
-    { id: 6, categoria: "doce", secao: "evento", nome: "Macarons (25 un)", descricao: "Finos biscoitos artesanais recheados com ganache de chocolate belga 70% e folha de ouro 24k.", preco: 240.00, img: "./img/maca.jpg" },
-    { id: 7, categoria: "doce", secao: "evento", nome: "Truffes au Champagne (25 un)", descricao: "Trufas de chocolate nobre com infusão de champanhe francês Millésimé e pó de cacau.", preco: 310.00, img: "./img/trufa.jpg" },
-    { id: 8, categoria: "doce", secao: "evento", nome: "Éclairs de Pistache d'Bronte (25 un)", descricao: "Massa choux crocante recheada com cremoso praliné de pistaches sicilianos selecionados.", preco: 280.00, img: "./img/eclair.jpg" },
-    { id: 9, categoria: "doce", secao: "evento", nome: "Tartaletes de Limão Taiti e Merengue (25 un)", descricao: "Delicadas tortinhas individuais com curd de limão Taiti e merengue suíço maçaricado à mão.", preco: 210.00, img: "./img/tlimao.jpg" },
-    { id: 13, categoria: "doce", secao: "evento", nome: "Dôme de Noisette et Chocolat (25 un)", descricao: "Domo delicado de chocolate belga com recheio cremoso de gianduia e crostini de avelãs.", preco: 260.00, img: "./img/dome.jpg" },
+    // 🍬 2. LES DOUCEURS FINES
+    { 
+        id: 4, 
+        categoria: "doce", 
+        secao: "doce", 
+        nome: "Macarons Parisiennes Royale", 
+        descricao: "Biscoitos de farinha de amêndoas recheados com ganache belga e detalhes em folha de ouro 24k.", 
+        preco: 225.00, 
+        unidade: "/ 25 un",
+        img: "./img/maca.jpg" 
+    },
+    { 
+        id: 5, 
+        categoria: "doce", 
+        secao: "doce", 
+        nome: "Truffes au Champagne Millésimé", 
+        descricao: "Trufas de chocolate nobre infusionadas com champanhe francês e polvilhadas com cacau puro.", 
+        preco: 210.00, 
+        unidade: "/ 25 un",
+        img: "./img/trufa.jpg" 
+    },
+    { 
+        id: 6, 
+        categoria: "doce", 
+        secao: "doce", 
+        nome: "Éclairs au Pistache de Bronte", 
+        descricao: "Mini bombas de massa choux crocante recheadas com creme artesanal de pistaches sicilianos.", 
+        preco: 190.00, 
+        unidade: "/ 25 un",
+        img: "./img/eclair.jpg" 
+    },
+    { 
+        id: 7, 
+        categoria: "doce", 
+        secao: "doce", 
+        nome: "Mini Red Velvet Velvet-Creme", 
+        descricao: "Mini bolos individuais aveludados com creme leve de cream cheese e pérolas crocantes.", 
+        preco: 175.00, 
+        unidade: "/ 25 un",
+        img: "./img/red.jpg" 
+    },
+    { 
+        id: 8, 
+        categoria: "doce", 
+        secao: "doce", 
+        nome: "Tartaletes au Citron et Meringue", 
+        descricao: "Torta miniatura com curd de limão Taiti e merengue suíço suavemente maçaricado.", 
+        preco: 165.00, 
+        unidade: "/ 25 un",
+        img: "./img/tlimao.jpg" 
+    },
 
-    // 🎁 LEMBRANCINHAS & SOUVENIRS
-    { id: 5, categoria: "lembrancinha", secao: "lembrancinha", nome: "Le Grand Bem-Marié Classique (25 un)", descricao: "Tradicional bem-casado de pão de ló macio recheado com doce de leite artesanal fava de baunilha.", preco: 180.00, img: "./img/bc.jpg" },
-    { id: 14, categoria: "lembrancinha", secao: "lembrancinha", nome: "Coffret de Calissons d'Aix (12 caixas)", descricao: "Caixas acrílicas personalizadas com doces tradicionais da Provence à base de amêndoas e frutas cristalizadas.", preco: 320.00, img: "./img/calissons.jpg" },
-    { id: 15, categoria: "lembrancinha", secao: "lembrancinha", nome: "Pot de Miel & Fleur d'Oranger (20 un)", descricao: "Potes de vidro delicados com mel silvestre artesanal infusionado com flor de laranjeira e laço de cetim.", preco: 290.00, img: "./img/mel.jpg" },
+    // 🎁 3. LES SOUVENIRS DE MARIAGE
+    { 
+        id: 9, 
+        categoria: "lembrancinha", 
+        secao: "lembrancinha", 
+        nome: "Le Grand Bem-Marié Classique", 
+        descricao: "Pão de ló leve selado com calda de açúcar e recheado com doce de leite de fava de baunilha.", 
+        preco: 180.00, 
+        unidade: "/ 25 un",
+        img: "./img/bc.jpg" 
+    },
+    { 
+        id: 10, 
+        categoria: "lembrancinha", 
+        secao: "lembrancinha", 
+        nome: "Coffret de Calissons d'Aix", 
+        descricao: "Caixinhas acrílicas com doces provençais tradicionais à base de amêndoas e mel.", 
+        preco: 250.00, 
+        unidade: "/ 25 un",
+        img: "./img/calissons.jpg" 
+    },
+    { 
+        id: 11, 
+        categoria: "lembrancinha", 
+        secao: "lembrancinha", 
+        nome: "Pots de Miel & Fleur d'Oranger", 
+        descricao: "Potes de vidro decorados com mel silvestre infusionado com flor de laranjeira.", 
+        preco: 220.00, 
+        unidade: "/ 25 un",
+        img: "./img/mel.jpg" 
+    },
 
-    // 🐾 LINHA PET-FRIENDLY
-    { id: 10, categoria: "pet", secao: "pet", nome: "Gâteau Canó Canine & Feline (Pet-Friendly)", descricao: "Bolo festivo 100% natural para pets, feito com aveia, cenoura, frango desfiado sem açúcar.", preco: 150.00, img: "./img/bolodog.jpg" },
-    { id: 11, categoria: "pet", secao: "pet", nome: "Pupcakes Gourmet à la Pomme et Cannelle", descricao: "Mini cupcakes caninos nutritivos de maçã, pasta de amendoim e iogurte sem lactose.", preco: 110.00, img: "./img/pup.jpg" },
-    { id: 12, categoria: "pet", secao: "pet", nome: "Truffes Canines à la Patate Douce et Caroube", descricao: "Docinhos saudáveis de batata-doce, frango desfiado e farinha de alfarroba.", preco: 130.00, img: "./img/brigadog.jpg" }
+    // 🐾 4. LA COLLECTION CANINE & GOURMET
+    { 
+        id: 12, 
+        categoria: "pet", 
+        secao: "pet", 
+        nome: "Gâteau Canin de Fête", 
+        descricao: "Bolo festivo 100% natural de aveia, batata-doce e frango desfiado sem sal ou açúcares.", 
+        preco: 130.00, 
+        unidade: "/ kg",
+        img: "./img/bolodog.jpg" 
+    },
+    { 
+        id: 13, 
+        categoria: "pet", 
+        secao: "pet", 
+        nome: "Pupcakes Gourmet Pomme & Cannelle", 
+        descricao: "Mini cupcakes caninos nutritivos de maçã, pasta de amendoim integral e cobertura de iogurte sem lactose.", 
+        preco: 145.00, 
+        unidade: "/ 25 un",
+        img: "./img/pup.jpg" 
+    },
+    { 
+        id: 14, 
+        categoria: "pet", 
+        secao: "pet", 
+        nome: "Truffes Canines à la Caroube", 
+        descricao: "Docinhos saudáveis modelados com proteína magra e farinha de alfarroba (substituto pet do cacau).", 
+        preco: 135.00, 
+        unidade: "/ 25 un",
+        img: "./img/brigadog.jpg" 
+    }
 ];
 
-// Renderiza a vitrine de produtos organizada por seções elegantes
+// Renderiza a vitrine com Títulos Limpos e Pura Sofisticação
 function renderizarProdutos() {
     const container = document.getElementById("produtos-container");
     if (!container) return;
 
     container.innerHTML = `
-        <h3 class="categoria-titulo">Mesa de Doces & Bolos Solemnes</h3>
-        <div class="grid-produtos" id="grid-evento"></div>
+        <h3 class="categoria-titulo">Les Gâteaux d'Exception</h3>
+        <div class="grid-produtos" id="grid-bolo"></div>
         
-        <h3 class="categoria-titulo">Lembrancinhas & Souvenirs Elegantes</h3>
-        <div class="grid-produtos" id="grid-lembrancinhas"></div>
+        <h3 class="categoria-titulo">Les Douceurs Fines</h3>
+        <div class="grid-produtos" id="grid-doce"></div>
 
-        <h3 class="categoria-titulo">Linha Pet-Friendly Gourmet</h3>
+        <h3 class="categoria-titulo">Les Souvenirs de Mariage</h3>
+        <div class="grid-produtos" id="grid-lembrancinha"></div>
+
+        <h3 class="categoria-titulo">La Collection Canine & Gourmet</h3>
         <div class="grid-produtos" id="grid-pet"></div>
     `;
 
-    const gridEvento = document.getElementById("grid-evento");
-    const gridLembrancinhas = document.getElementById("grid-lembrancinhas");
+    const gridBolo = document.getElementById("grid-bolo");
+    const gridDoce = document.getElementById("grid-doce");
+    const gridLembrancinha = document.getElementById("grid-lembrancinha");
     const gridPet = document.getElementById("grid-pet");
 
     produtos.forEach(produto => {
+        const nomeEscapado = produto.nome.replace(/'/g, "\\'");
+
         const cardHTML = `
             <div class="card-produto">
-                <img src="${produto.img}" alt="${produto.nome}" onclick="abrirZoomImagem('${produto.img}', '${produto.nome}')" style="cursor: zoom-in;">
+                <img src="${produto.img}" alt="${produto.nome}" onclick="abrirZoomImagem('${produto.img}', '${nomeEscapado}')" style="cursor: zoom-in;">
                 <div class="card-body">
                     <h4 class="card-title">${produto.nome}</h4>
                     <p class="card-description">${produto.descricao}</p>
-                    <p class="card-price">R$ ${produto.preco.toFixed(2).replace('.', ',')}</p>
-                    <button class="btn-primary" onclick="adicionarAoCarrinho('${produto.nome}')">Reservar para o Evento</button>
+                    <p class="card-price">
+                        R$ ${produto.preco.toFixed(2).replace('.', ',')} 
+                        <small style="font-size: 0.78rem; font-weight: 400; color: var(--text-muted);">${produto.unidade}</small>
+                    </p>
+                    <button class="btn-primary" onclick="adicionarAoCarrinho('${nomeEscapado}')">Reservar para o Evento</button>
                 </div>
             </div>
         `;
 
-        if (produto.secao === "evento") {
-            gridEvento.innerHTML += cardHTML;
+        if (produto.secao === "bolo") {
+            gridBolo.innerHTML += cardHTML;
+        } else if (produto.secao === "doce") {
+            gridDoce.innerHTML += cardHTML;
         } else if (produto.secao === "lembrancinha") {
-            gridLembrancinhas.innerHTML += cardHTML;
+            gridLembrancinha.innerHTML += cardHTML;
         } else if (produto.secao === "pet") {
             gridPet.innerHTML += cardHTML;
         }
@@ -152,7 +288,7 @@ function renderizarOpcoesCardapio() {
             <div class="item-selecao-row">
                 <div class="item-selecao-info">
                     <strong>${prod.nome}</strong>
-                    <small>R$ ${prod.preco.toFixed(2).replace('.', ',')}</small>
+                    <small>R$ ${prod.preco.toFixed(2).replace('.', ',')} ${prod.unidade}</small>
                 </div>
                 <div class="qtd-controls">
                     <button class="btn-secondary" onclick="alterarQtdItem(${prod.id}, -1)">-</button>
@@ -216,7 +352,7 @@ window.abrirZoomImagem = function (src, titulo) {
 
     if (modalImg && imgElement) {
         imgElement.src = src;
-        if (caption) caption.innerText = titulo;
+        if (caption) caption.innerText = titulo || '';
         modalImg.classList.remove("hidden");
     }
 }
@@ -226,6 +362,7 @@ window.fecharZoomImagem = function () {
     if (modalImg) modalImg.classList.add("hidden");
 }
 
+// Envio de Feedback/Contato para o Firebase
 window.enviarFAQ = async function (event) {
     event.preventDefault();
     if (!db) { alert("O banco de dados não está conectado."); return; }
@@ -243,6 +380,7 @@ window.enviarFAQ = async function (event) {
     }
 }
 
+// Cálculo de Frete via ViaCEP
 window.calcularFrete = async function () {
     const cep = document.getElementById("cepInput").value.replace(/\D/g, '');
     const containerEndereco = document.getElementById("resultadoEndereco");
@@ -258,7 +396,7 @@ window.calcularFrete = async function () {
         const data = await response.json();
 
         if (data.erro) {
-            containerEndereco.innerHTML = "<span style='color: var(--accent-color);'>CEP não localizado.</span>";
+            containerEndereco.innerHTML = "<span style='color: var(--accent-rose);'>CEP não localizado.</span>";
             containerFrete.innerHTML = "";
             return;
         }
