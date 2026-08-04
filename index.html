@@ -39,13 +39,21 @@
 
         <!-- Menu de Navegação -->
         <nav class="nav-links" id="navLinks">
+            <a href="#catalogo">Catálogo</a>
+            <a href="javascript:void(0)" onclick="abrirGuiaHarmonizacaoCompleto('espumante')">L'Art de l'Accord</a>
+            
+            <!-- Botão com ícone estilo carrinho/entrega para abrir o Modal de Frete -->
+            <button class="btn-frete-cart" onclick="abrirModalFrete()">
+                <i class="fa-solid fa-truck-fast"></i> Simular Frete
+            </button>
+
             <button class="btn-secondary" onclick="abrirCalculadora()">Calculadora do Casamento</button>
             <button class="btn-secondary" onclick="abrirFAQ()">Dúvidas & Contato</button>
             <a href="admin.html" class="admin-link">Área Restrita</a>
         </nav>
     </header>
 
-    <!-- HERO BANNER (COM MARCA D'ÁGUA E DIVISOR DOURADO) -->
+    <!-- HERO BANNER -->
     <section class="hero marca-dagua-bg">
         <h2>Coleção Exclusiva para Casamentos</h2>
         <p class="slogan-hero">"A arte de transformar celebrações em momentos eternos."</p>
@@ -62,18 +70,23 @@
         <div id="produtos-container">
             <!-- Os cards dos produtos são gerados dinamicamente via JS -->
         </div>
+    </main>
 
-        <!-- SIMULADOR DE FRETE VIA CEP -->
-        <section class="carrinho-frete-section">
-            <h3>Simular Entrega para o Evento</h3>
+    <!-- MODAL POP-UP DE FRETE -->
+    <div id="modalFrete" class="modal">
+        <div class="modal-content marca-dagua-bg frete-modal-box">
+            <span class="close-btn" onclick="fecharModalFrete()">&times;</span>
+            <h3 class="section-title">Consulte a Entrega Climatizada para o Seu Evento</h3>
+            <p class="calc-subtitle">Atendemos recepções, igrejas e espaços de festas com frota própria e temperatura controlada.</p>
+            
             <div class="frete-box">
                 <input type="text" id="cepInput" placeholder="Digite o CEP do local do evento..." maxlength="9">
                 <button class="btn-primary" onclick="calcularFrete()">Calcular</button>
             </div>
             <div id="resultadoEndereco" class="resultado-frete"></div>
             <div id="resultadoFrete" class="resultado-frete"></div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <!-- MODAL CALCULADORA DO CASAMENTO -->
     <div id="modalCalculadora" class="modal">
@@ -104,10 +117,9 @@
                 <h4>Recomendação do Ateliê:</h4>
                 <div class="metas-container">
                     <div class="meta-item">Bolo Sugerido: <strong id="metaBoloTotal">0</strong> kg</div>
-                    <div class="meta-item">Doces: <strong id="metaDocesAtual">0</strong> / <strong
-                            id="metaDocesTotal">0</strong> un</div>
-                    <div class="meta-item">Linha Pet: <strong id="metaPetsAtual">0</strong> / <strong
-                            id="metaPetsTotal">0</strong> porções</div>
+                    <div class="meta-item">Doces Finos: <strong id="metaDocesAtual">0</strong> / <strong id="metaDocesTotal">0</strong> un</div>
+                    <div class="meta-item">Lembrancinhas: <strong id="metaLembrancasAtual">0</strong> / <strong id="metaLembrancasTotal">0</strong> un</div>
+                    <div class="meta-item">Linha Pet: <strong id="metaPetsAtual">0</strong> / <strong id="metaPetsTotal">0</strong> porções</div>
                 </div>
 
                 <h4 style="margin-top: 1.2rem;">Monte seu Cardápio:</h4>
@@ -118,6 +130,34 @@
                         Casamento</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE HARMONIZAÇÃO INDIVIDUAL DO PRODUTO -->
+    <div id="modalHarmonizacaoProduto" class="modal" style="display: none;">
+        <div class="modal-content marca-dagua-bg" style="max-width: 480px;">
+            <span class="close-btn" onclick="fecharModalHarmonizacaoProduto()">&times;</span>
+            <div id="conteudoHarmonizacaoProduto"></div>
+        </div>
+    </div>
+
+    <!-- MODAL GUIA DE HARMONIZAÇÃO "L'ART DE L'ACCORD" (VISÃO POR BEBIDA) -->
+    <div id="modalGuiaHarmonizacao" class="modal" style="display: none;">
+        <div class="modal-content marca-dagua-bg" style="max-width: 650px;">
+            <span class="close-btn" onclick="fecharGuiaHarmonizacao()">&times;</span>
+            <h3 class="section-title" style="text-align: center; margin-bottom: 5px;">L'Art de l'Accord 🍷</h3>
+            <p class="calc-subtitle" style="text-align: center; margin-bottom: 20px;">
+                Selecione a bebida do seu evento para visualizar as combinações ideais do nosso ateliê:
+            </p>
+            
+            <div class="filtros-bebidas">
+                <button class="btn-bebida-filtro active" data-bebida="espumante" onclick="filtrarHarmonizacaoPorBebida('espumante')">🍾 Espumantes</button>
+                <button class="btn-bebida-filtro" data-bebida="vinho" onclick="filtrarHarmonizacaoPorBebida('vinho')">🍷 Vinhos Doce/Porto</button>
+                <button class="btn-bebida-filtro" data-bebida="destilado" onclick="filtrarHarmonizacaoPorBebida('destilado')">🥃 Destilados</button>
+                <button class="btn-bebida-filtro" data-bebida="cafe" onclick="filtrarHarmonizacaoPorBebida('cafe')">☕ Cafés & Chás</button>
+            </div>
+
+            <div id="resultadosHarmonizacaoBebida" style="margin-top: 20px; max-height: 380px; overflow-y: auto;"></div>
         </div>
     </div>
 
@@ -177,6 +217,14 @@
 
     <!-- Scripts -->
     <script type="module" src="./js/script.js"></script>
+    <script>
+        function abrirModalFrete() {
+            document.getElementById('modalFrete').style.display = 'flex';
+        }
+        function fecharModalFrete() {
+            document.getElementById('modalFrete').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
